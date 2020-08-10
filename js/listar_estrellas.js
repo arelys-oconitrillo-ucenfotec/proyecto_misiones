@@ -1,6 +1,6 @@
 'use strict';
 
-const sct_card = document.querySelector('#card');
+const tbody = document.querySelector('#tbl-estrellas tbody');
 
 let lista_estrellas = [];
 
@@ -8,28 +8,19 @@ if (localStorage.getItem('listas_estrellas')) {
     lista_estrellas = JSON.parse(localStorage.getItem('listas_estrellas'));
 }
 
-const mostrar_estrellas = () => {
+const mostrar_planetas = () =>{
     lista_estrellas.forEach(obj_estrella => {
         console.log(lista_estrellas);
-        let contenedor = document.createElement('div');
-
-        let nombre = document.createElement('h1');
-        nombre.innerText = obj_estrella.nombre;
-
-        let boton = document.createElement('button');
-        boton.type = 'button';
-        boton.innerText = 'Ver';
-
-        contenedor.appendChild(nombre);
-        contenedor.appendChild(boton);
-
-        sct_card.appendChild(contenedor);
-
-        boton.addEventListener('click', () => {
-            lista_estrellas = JSON.parse(localStorage.getItem('listas_estrellas'));
-            window.location.href = `mostrar-cuerpo-celeste.html?tipo=${obj_estrella.nombre}`;
-        });
+        let fila = tbody.insertRow();
+        fila.insertCell().innerHTML = obj_estrella.nombre;
+        fila.insertCell().innerHTML = obj_estrella.masa;
+        fila.insertCell().innerHTML = obj_estrella.temperatura;
+        fila.insertCell().innerHTML = obj_estrella.duracion_dia;
+        fila.insertCell().innerHTML = obj_estrella.edad;
+        fila.insertCell().innerHTML = obj_estrella.composicion;
+        fila.insertCell().innerHTML = obj_estrella.intensidad_luminica;
+        fila.insertCell().innerHTML = obj_estrella.tamanno;
     });
 };
 
-mostrar_estrellas();
+mostrar_planetas();

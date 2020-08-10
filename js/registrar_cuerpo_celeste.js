@@ -64,6 +64,7 @@ const registrar_cuerpo_celeste = () => {
             let distancia_sol = document.querySelector('#txt-dist-sol').value;
             let duracion_anno = document.querySelector('#txt-duracion-anno').value;
             let cant_satelites = document.querySelector('#txt-cant-satelites').value;
+            
             obj_cuerpos_celestes = new Planeta(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, distancia_sol, duracion_anno, cant_satelites);
 
             lista_planetas.push(obj_cuerpos_celestes);
