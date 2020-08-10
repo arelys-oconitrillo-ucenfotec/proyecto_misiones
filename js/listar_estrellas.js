@@ -8,14 +8,6 @@ if (localStorage.getItem('listas_estrellas')) {
     lista_estrellas = JSON.parse(localStorage.getItem('listas_estrellas'));
 }
 
-const obtener_parametro_url = () => {
-    const location = new URL(window.location.href);
-    const parametros = new URLSearchParams(location.search);
-
-    let tipo1 = parametros.get('tipo1');
-    return tipo1;
-};
-
 const mostrar_estrellas = () => {
     lista_estrellas.forEach(obj_estrella => {
         console.log(lista_estrellas);
@@ -34,7 +26,8 @@ const mostrar_estrellas = () => {
         sct_card.appendChild(contenedor);
 
         boton.addEventListener('click', () => {
-            window.location.href = 'mostrar-info.html?';
+            lista_estrellas = JSON.parse(localStorage.getItem('listas_estrellas'));
+            window.location.href = `mostrar-cuerpo-celeste.html?tipo=${obj_estrella.nombre}`;
         });
     });
 };
