@@ -1,6 +1,7 @@
 'use strict';
 
 const sct_cuerpo_celeste = document.querySelector('#sct-card');
+const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
 const obtener_parametro_url = () => {
     const location = new URL(window.location.href);
@@ -58,3 +59,9 @@ const mostrar_cuerpos_celestes = (pcuerpos_celestes) => {
 };
 
 mostrar_cuerpos_celestes(cuerpos_celestes);
+
+filtro_nombre.addEventListener('keyup', () => {
+    let filtro = filtro_nombre.value.toLowerCase();
+    let cuerpos_filtrados = cuerpos_celestes.filter((cuerpo) => cuerpo.nombre.toLowerCase().includes(filtro));
+    mostrar_cuerpos_celestes(cuerpos_filtrados);
+});

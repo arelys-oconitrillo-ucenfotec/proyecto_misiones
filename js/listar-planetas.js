@@ -1,6 +1,7 @@
 'use strict';
 
 const tbody = document.querySelector('#tbl-planetas tbody');
+const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
 let lista_planetas = [];
 
@@ -8,9 +9,9 @@ if (localStorage.getItem('listas_planetas')) {
     lista_planetas = JSON.parse(localStorage.getItem('listas_planetas'));
 }
 
-const mostrar_planetas = () =>{
-    lista_planetas.forEach(obj_planeta => {
-        console.log(lista_planetas);
+const mostrar_planetas = (plista_planetas) =>{
+    tbody.innerHTML = '';
+    plista_planetas.forEach(obj_planeta => {
         let fila = tbody.insertRow();
         fila.insertCell().innerHTML = obj_planeta.nombre;
         fila.insertCell().innerHTML = obj_planeta.masa;
@@ -23,4 +24,10 @@ const mostrar_planetas = () =>{
     });
 };
 
-mostrar_planetas();
+mostrar_planetas(lista_planetas);
+
+filtro_nombre.addEventListener('keyup', () => {
+    let filtro = filtro_nombre.value.toLowerCase();
+    let planetas_filtrados = lista_planetas.filter((planeta) => planeta.nombre.toLowerCase().includes(filtro));
+    mostrar_planetas(planetas_filtrados);
+});

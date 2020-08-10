@@ -8,6 +8,7 @@ const info_planeta = document.querySelector('#info-planeta');
 const info_satelite = document.querySelector('#info-satelite');
 const btn_registrar = document.querySelector('#btn-registrar');
 
+
 info_estrella.classList.add('ocultar');
 info_planeta.classList.add('ocultar');
 info_satelite.classList.add('ocultar');
@@ -66,6 +67,8 @@ const registrar_cuerpo_celeste = () => {
             let cant_satelites = document.querySelector('#txt-cant-satelites').value;
             
             obj_cuerpos_celestes = new Planeta(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, distancia_sol, duracion_anno, cant_satelites);
+            obj_planeta = new Planeta(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, distancia_sol, duracion_anno, cant_satelites);
+
 
             lista_planetas.push(obj_cuerpos_celestes);
             localStorage.setItem('listas_planetas', JSON.stringify(lista_planetas));
@@ -78,9 +81,11 @@ const registrar_cuerpo_celeste = () => {
                 let dist_satelite_cuerpo = document.querySelector('#txt-dist-satelite-cuerpo').value;
                 let caracteristicas = document.querySelector('#txt-caracteristicas').value;
                 let planeta_pertenece = document.querySelector('#txt-planeta-pertenece').value;
-                obj_cuerpos_celestes = new Satelite(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, dist_satelite_cuerpo, caracteristicas, planeta_pertenece);
 
-                lista_satelites.push(obj_cuerpos_celestes);
+                obj_cuerpos_celestes = new Satelite(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, dist_satelite_cuerpo, caracteristicas, planeta_pertenece);
+                obj_satelite = new Satelite(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, dist_satelite_cuerpo, caracteristicas, planeta_pertenece);
+
+                lista_satelites.push(obj_satelite);
                 localStorage.setItem('listas_satelites', JSON.stringify(lista_satelites));
 
                 lista_cuerpos_celeste.push(obj_cuerpos_celestes);
@@ -132,4 +137,6 @@ document.querySelector('#rbt-satelite').addEventListener('click', () => {
 document.querySelector('#rbt-satelite').addEventListener('click', () => {
     info_planeta.classList.add('ocultar');
 });
+
+
 
