@@ -1,30 +1,29 @@
 'use strict';
 
-const card_cuerpo_celeste = document.querySelector('#card');
+let cuerpo_celeste = JSON.parse(localStorage.getItem('cuerpo_celeste'));
+let boton = document.querySelector('#boton_atras');
 
 const obtener_parametro_url = () => {
     const location = new URL(window.location.href);
     const parametros = new URLSearchParams(location.search);
 
-    let tipo = parametros.get('tipo');
-    return tipo;
+    let nombre = parametros.get('nombre');
+    return nombre;
 };
 
 
-let tipo_cuerpo_celeste = obtener_parametro_url('tipo');
+let nombre_cuerpo_celeste = obtener_parametro_url('nombre');
 
 const retornar_cuerpos_celestes = () => {
-    let cuerpos_celestes = [];
+    let cuerpos_celestes;
 
     if (localStorage.getItem('listas_cuerpos_celestes')) {
         cuerpos_celestes = JSON.parse(localStorage.getItem('listas_cuerpos_celestes'));
     }
 
-    console.log(cuerpos_celestes);
+    let cuerpos_celestes_filtrados = cuerpos_celestes.filter((obj) => obj.nombre == nombre_cuerpo_celeste);
 
-    let cuerpos_celestes_filtrados = cuerpos_celestes.filter((obj) => obj.tipo[0] == tipo_cuerpo_celeste);
-
-    if(cuerpos_celestes_filtrados.length == 0){
+    if (cuerpos_celestes_filtrados.length == 0) {
         return cuerpos_celestes;
     } else {
         return cuerpos_celestes_filtrados;
@@ -33,15 +32,15 @@ const retornar_cuerpos_celestes = () => {
 
 let cuerpos_celestes = retornar_cuerpos_celestes();
 
-const mostrar_cuerpos_celestes = (pcuerpos_celestes) =>{
-    card_cuerpo_celeste.innerHTML = '';
 
-    pcuerpos_celestes.forEach(obj => {
-        let card_cuerpos = document.createElement('div');
-        card_cuerpos.classList.add('card');
+if (cuerpos_celestes) {
+    document.querySelector('.tipo').innerText = cuerpos_celestes[0].tipo;
+    document.querySelector('.nombre').innerText = `Nombre: ${cuerpos_celestes[0].nombre}`;
+    document.querySelector('.masa').innerText = `Masa: ${cuerpos_celestes[0].masa}`;
+    document.querySelector('.temperatura').innerText = `Temperatura media: ${cuerpos_celestes[0].temperatura}`;
+    document.querySelector('.duracion').innerText = `Duración de un día: ${cuerpos_celestes[0].duracion_dia}`;
+}
 
-        
-    });
-};
-
-mostrar_cuerpos_celestes(cuerpos_celestes);
+boton.addEventListener('click', () => {
+    window.location.href = 'listar_cuerpos_celestes.html';
+});
