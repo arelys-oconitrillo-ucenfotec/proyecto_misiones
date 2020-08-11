@@ -6,11 +6,10 @@ class Programa {
         this.fecha_inicio = fecha_inicio;
         this.fecha_final = fecha_final;
         this.alcance = alcance;
-        this.misiones = misiones;
-        this.lista_programas = [];
+        this.coleccion_misiones = [];
     };
 
-    agregar_mision = (obj_programa) => {
-        this.lista_programas.push(obj_programa);
+    agregar_mision = (obj_mision) => {
+        this.lista_programas.push(obj_mision);
     };
 };
