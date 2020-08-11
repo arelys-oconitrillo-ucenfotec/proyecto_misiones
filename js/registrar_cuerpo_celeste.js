@@ -30,10 +30,9 @@ if (localStorage.getItem('listas_planetas')) {
     lista_planetas.forEach(planeta => {
         slt_planetas.add(new Option(planeta.nombre, planeta.nombre));
     });
- 
-    option_satelite.classList.remove('ocultar');
 
-} 
+    option_satelite.classList.remove('ocultar');
+}
 
 if (localStorage.getItem('listas_satelites')) {
     lista_satelites = JSON.parse(localStorage.getItem('listas_satelites'));
@@ -43,6 +42,12 @@ if (localStorage.getItem('listas_cuerpos_celestes')) {
     lista_cuerpos_celeste = JSON.parse(localStorage.getItem('listas_cuerpos_celestes'));
 }
 
+const obtener_planeta = (pnombre_planeta) => {
+    let info_planeta = lista_planetas.filter((planeta) => planeta.nombre == pnombre_planeta);
+
+    let planeta = new Planeta(info_planeta[0].nombre, info_planeta[0].masa, info_planeta[0].temperatura, info_planeta[0].duracion_dia, info_planeta[0].tipo, info_planeta[0].distancia_sol, info_planeta[0].duracion_anno, info_planeta[0].cant_satelites);
+    return planeta;
+};
 
 const limpiar = () => {
     input_nombre.value = '';
@@ -74,7 +79,6 @@ const registrar_cuerpo_celeste = () => {
         let obj_cuerpos_celestes;
 
         if (tipo_cuerpo_celeste == 'Estrella') {
-            console.log(localStorage.getItem('listas_cuerpos_celestes'));
             let edad = document.querySelector('#txt-edad').value;
             let composicion = document.querySelector('#txt-composicion').value;
             let intensidad_lumi = document.querySelector('#txt-intensidad-lumi').value;
@@ -124,16 +128,30 @@ const registrar_cuerpo_celeste = () => {
                 if (tipo_cuerpo_celeste == 'Satélite') {
                     let dist_satelite_cuerpo = document.querySelector('#txt-dist-satelite-cuerpo').value;
                     let caracteristicas = document.querySelector('#txt-caracteristicas').value;
-                    let planeta_seleccionado = document.querySelector('#slt-planetas').value;
-                    
+                    let nombre_planeta = document.querySelector('#slt-planetas').value;
 
-                    obj_cuerpos_celestes = new Satelite(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, dist_satelite_cuerpo, caracteristicas, planeta_seleccionado);
+
+                    obj_cuerpos_celestes = new Satelite(nombre, masa, temperatura, duracion_dia, tipo_cuerpo_celeste, dist_satelite_cuerpo, caracteristicas, nombre_planeta);
+
+
+                    let planeta_seleccionado = obtener_planeta(nombre_planeta);
+
+                    planeta_seleccionado.agregar_satelite(obj_cuerpos_celestes);
 
                     lista_satelites.push(obj_cuerpos_celestes);
                     localStorage.setItem('listas_satelites', JSON.stringify(lista_satelites));
 
                     lista_cuerpos_celeste.push(obj_cuerpos_celestes);
                     localStorage.setItem('listas_cuerpos_celestes', JSON.stringify(lista_cuerpos_celeste));
+
+                    let lista_planeta_filtrada = lista_planetas.filter((planeta) => planeta.nombre != planeta_seleccionado.nombre);
+                    lista_planeta_filtrada.push(planeta_seleccionado);
+                    localStorage.setItem('listas_planetas', JSON.stringify(lista_planeta_filtrada));
+
+                    let lista_cuerpo_celeste_filtrado = lista_cuerpos_celeste.filter((planeta) => planeta.nombre != planeta_seleccionado.nombre);
+                    lista_cuerpo_celeste_filtrado.push(planeta_seleccionado);
+                    localStorage.setItem('listas_cuerpos_celestes', JSON.stringify(lista_cuerpo_celeste_filtrado));
+                    
 
                     Swal.fire({
                         'icon': 'success',
