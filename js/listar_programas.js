@@ -1,6 +1,35 @@
 'use strict';
-const tabla = document.querySelector('#tbl-programas tbody');
+const sct_programas_espaciales = document.querySelector('#sct-card');
+const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
+const obtener_parametro_url = () => {
+    const location = new URL(window.location.href);
+    const parametros = new URLSearchParams(location.search);
+
+    let nombre = parametros.get('nombre');
+    return nombre;
+};
+
+let nombre_programa_espacial = obtener_parametro_url('nombre');
+
+const retornar_programas_espaciales = () => {
+    let programas_espaciales = [];
+
+    if (localStorage.getItem('lista_programas')) {
+        programas_espaciales = JSON.parse(localStorage.getItem('lista_programas'));
+    }
+
+    let programas_espaciales_filtrados = programas_espaciales.filter((obj) => obj.nombre == nombre_programa_espacial);
+
+    if (programas_espaciales_filtrados.length == 0) {
+        return programas_espaciales;
+    } else {
+        return programas_espaciales_filtrados;
+    }
+};
+
+let programas_espaciales = retornar_programas_espaciales();
+/*
 const obtener_programas = () => {
     let programas = [];
 
@@ -9,20 +38,48 @@ const obtener_programas = () => {
     }
 
     return productos;
-};
+};*/
 
-const mostrar_programas = () => {
-    let productos = obtener_programas();
-    tabla.innerHTML = '';
+const mostrar_programas = (pprogramas_espaciales) => {
+    //let productos = obtener_programas();
+    sct_programas_espaciales.innerHTML = '';
 
-    productos.forEach(obj_programa => {
+    pprogramas_espaciales.forEach(obj => {
+        let card_programas = document.createElement('div');
+        card_programas.classList.add('card');
+
+        let nombre = document.createElement('h1');
+        nombre.innerText = obj.nombre;
+
+        let boton = document.createElement('button');
+        boton.type = 'button';
+        boton.innerText = 'Ver';
+
+        card_programas.appendChild(nombre);
+        card_programas.appendChild(boton);
+        sct_programas_espaciales.appendChild(card_programas);
+
+        boton.addEventListener('click', () => {
+            localStorage.setItem('programa_espacial', JSON.stringify(obj));
+            window.location.href = `mostrar-programa-espacial.html?nombre=${obj.nombre}`;
+        });
+    });
+
+
+    /*pprogramas_espaciales.forEach(obj_programa => {
         let fila = tabla.insertRow();
         fila.insertCell().innerHTML = obj_programa.nombre;
         fila.insertCell().innerHTML = obj_programa.fecha_inicio;
         fila.insertCell().innerHTML = obj_programa.fecha_final;
         fila.insertCell().innerHTML = obj_programa.alcance;
         fila.insertCell().innerHTML = obj_programa.misiones;
-    });
+    });*/
 };
 
-mostrar_programas();
+mostrar_programas(programas_espaciales);
+
+filtro_nombre.addEventListener('keyup', () => {
+    let filtro = filtro_nombre.value.toLowerCase();
+    let programas_espaciales_filtrados = programas_espaciales.filter((programa) => programa.nombre.toLowerCase().includes(filtro));
+    mostrar_programas(programas_espaciales_filtrados);
+});

@@ -7,11 +7,11 @@ const txt_alcance = document.querySelector('#txt-alcance');
 //const txt_misiones = document.querySelector('#txt-misiones');
 const btn_registrar_prog = document.querySelector('#btn-registrar-prog');
 
-let lista_programas = [];
+let lista_programas = obtener_programas();
 
-if (localStorage.getItem('lista_programas')) {
+/*if (localStorage.getItem('lista_programas')) {
     lista_programas = JSON.parse(localStorage.getItem('lista_programas'));
-}
+}*/
 
 const registrar_programa = () => {
     let nombre = txt_nombre.value;
@@ -28,3 +28,5 @@ const registrar_programa = () => {
 };
 
 btn_registrar_prog.addEventListener('click', registrar_programa);
+
+obtener_programas();
