@@ -25,7 +25,6 @@ const registrar_programa = () => {
 
     lista_programas.push(obj_programa);
     localStorage.setItem('lista_programas', JSON.stringify(lista_programas));
-    console.log('obj programa' + obj_programa);
 };
 
 btn_registrar_prog.addEventListener('click', registrar_programa);

@@ -39,6 +39,7 @@ if (cuerpos_celestes) {
     document.querySelector('.masa').innerText = `Masa: ${cuerpos_celestes[0].masa}`;
     document.querySelector('.temperatura').innerText = `Temperatura media: ${cuerpos_celestes[0].temperatura}`;
     document.querySelector('.duracion').innerText = `Duración de un día: ${cuerpos_celestes[0].duracion_dia}`;
+    
 }
 
 boton.addEventListener('click', () => {
