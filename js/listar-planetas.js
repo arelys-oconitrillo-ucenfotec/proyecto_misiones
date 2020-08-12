@@ -3,11 +3,11 @@
 const tbody = document.querySelector('#tbl-planetas tbody');
 const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
-let lista_planetas = [];
+let lista_planetas = obtener_planetas();
 
-if (localStorage.getItem('listas_planetas')) {
+/*if (localStorage.getItem('listas_planetas')) {
     lista_planetas = JSON.parse(localStorage.getItem('listas_planetas'));
-}
+}*/
 
 const mostrar_planetas = (plista_planetas) => {
     tbody.innerHTML = '';
@@ -28,7 +28,7 @@ const mostrar_planetas = (plista_planetas) => {
         fila.insertCell().appendChild(boton);
         boton.addEventListener('click', () => {
             localStorage.setItem('planeta_seleccionado', JSON.stringify(obj_planeta));
-            window.location.href = 'registrar_satelite.html';
+            window.location.href = 'registrar-satelite.html';
         });
     });
 

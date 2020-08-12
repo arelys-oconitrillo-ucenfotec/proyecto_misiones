@@ -9,20 +9,16 @@ const obtener_planetas = () => {
 };
 
 const buscar_planeta = (pnombre) => {
-    obtener_planetas();
+    let lista_planetas = obtener_planetas();
     let planeta;
     lista_planetas.forEach(obj_planeta => {
-        if (obj_planeta.codigo == pnombre) {
+        if (obj_planeta.nombre == pnombre) {
             planeta = obj_planeta;
         }
     });
 
     return planeta;
 };
-
-console.log(buscar_planeta('tierra'));
-console.log(buscar_planeta('pluton'));
-
 
 const modificar_planetas = (pplaneta) => {
     let lista_planetas = obtener_planetas();

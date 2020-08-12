@@ -5,8 +5,8 @@ const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
 let lista_satelites = [];
 
-if (localStorage.getItem('listas_satelites')) {
-    lista_satelites = JSON.parse(localStorage.getItem('listas_satelites'));
+if (localStorage.getItem('lista_satelites')) {
+    lista_satelites = JSON.parse(localStorage.getItem('lista_satelites'));
 }
 
 console.log(lista_satelites);
