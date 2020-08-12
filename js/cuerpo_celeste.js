@@ -37,10 +37,10 @@ class Planeta extends Cuerpo_celeste {
 };
 
 class Satelite extends Cuerpo_celeste {
-    constructor(pnombre, pmasa, ptemperatura, pduracion_dia, ptipo, pdista_satelite_cuerpo_orbita, pcaracteristicas, pplaneta_pertenece) {
+    constructor(pnombre, pmasa, ptemperatura, pduracion_dia, ptipo, pdista_satelite_cuerpo_orbita, pcaracteristicas/*pplaneta_pertenece*/) {
         super(pnombre, pmasa, ptemperatura, pduracion_dia, ptipo);
         this.dista_satelite_cuerpo_orbita = pdista_satelite_cuerpo_orbita;
         this.caracteristicas = pcaracteristicas;
-        this.planeta_pertenece = pplaneta_pertenece;
+        //this.planeta_pertenece = pplaneta_pertenece;
     };
 };

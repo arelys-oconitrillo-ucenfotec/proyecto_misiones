@@ -9,7 +9,7 @@ if (localStorage.getItem('listas_planetas')) {
     lista_planetas = JSON.parse(localStorage.getItem('listas_planetas'));
 }
 
-const mostrar_planetas = (plista_planetas) =>{
+const mostrar_planetas = (plista_planetas) => {
     tbody.innerHTML = '';
     plista_planetas.forEach(obj_planeta => {
         let fila = tbody.insertRow();
@@ -21,7 +21,18 @@ const mostrar_planetas = (plista_planetas) =>{
         fila.insertCell().innerHTML = obj_planeta.duracion_anno;
         fila.insertCell().innerHTML = obj_planeta.cant_satelites;
         fila.insertCell().innerHTML = obj_planeta.coleccion_satelites;
+
+        let boton = document.createElement('button');
+        boton.type = "button";
+        boton.innerText = 'Agregar Satelite';
+        fila.insertCell().appendChild(boton);
+        boton.addEventListener('click', () => {
+            localStorage.setItem('planeta_seleccionado', JSON.stringify(obj_planeta));
+            window.location.href = 'registrar_satelite.html';
+        });
     });
+
+
 };
 
 mostrar_planetas(lista_planetas);
