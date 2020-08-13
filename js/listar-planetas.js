@@ -31,8 +31,6 @@ const mostrar_planetas = (plista_planetas) => {
             window.location.href = 'registrar-satelite.html';
         });
     });
-
-
 };
 
 mostrar_planetas(lista_planetas);

@@ -15,7 +15,7 @@ if (localStorage.getItem('lista_misiones')) {
 }
 
 const registrar_mision = () => {
-    let programa_json = JSON.parse(localStorage.getItem('planeta_seleccionado'));
+    let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
     let programa;
     let mision;
 

@@ -61,7 +61,7 @@ const mostrar_programas = (pprogramas_espaciales) => {
 
         boton.addEventListener('click', () => {
             localStorage.setItem('programa_espacial', JSON.stringify(obj));
-            window.location.href = `mostrar-programa-espacial.html?nombre=${obj.nombre}`;
+            window.location.href = `mostrar-programa.html?nombre=${obj.nombre}`;
         });
     });
 
