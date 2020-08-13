@@ -29,16 +29,6 @@ const retornar_programas_espaciales = () => {
 };
 
 let programas_espaciales = retornar_programas_espaciales();
-/*
-const obtener_programas = () => {
-    let programas = [];
-
-    if (localStorage.getItem('lista_programas')) {
-        programas = JSON.parse(localStorage.getItem('lista_programas'));
-    }
-
-    return productos;
-};*/
 
 const mostrar_programas = (pprogramas_espaciales) => {
     //let productos = obtener_programas();
@@ -65,15 +55,6 @@ const mostrar_programas = (pprogramas_espaciales) => {
         });
     });
 
-
-    /*pprogramas_espaciales.forEach(obj_programa => {
-        let fila = tabla.insertRow();
-        fila.insertCell().innerHTML = obj_programa.nombre;
-        fila.insertCell().innerHTML = obj_programa.fecha_inicio;
-        fila.insertCell().innerHTML = obj_programa.fecha_final;
-        fila.insertCell().innerHTML = obj_programa.alcance;
-        fila.insertCell().innerHTML = obj_programa.misiones;
-    });*/
 };
 
 mostrar_programas(programas_espaciales);

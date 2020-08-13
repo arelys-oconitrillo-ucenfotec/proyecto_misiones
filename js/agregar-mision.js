@@ -11,7 +11,7 @@ const boton = document.querySelector('#btn-guardar');
 let lista_misiones = [];
 
 if (localStorage.getItem('lista_misiones')) {
-    lista_misiones = JSON.parse(localStorage.getItem('lista_satelites'));
+    lista_misiones = JSON.parse(localStorage.getItem('lista_misiones'));
 }
 
 const registrar_mision = () => {
