@@ -5,16 +5,42 @@ let boton_atras = document.querySelector('#boton_atras');
 
 let programa_espacial = JSON.parse(localStorage.getItem('programa_espacial'));
 
-console.log(programa_espacial);
+const obtener_parametro_url = () => {
+    const location = new URL(window.location.href);
+    const parametros = new URLSearchParams(location.search);
+
+    let nombre = parametros.get('nombre');
+    return nombre;
+};
+
+let nombre_programa = obtener_parametro_url('nombre');
+
+const retornar_programa = () => {
+    let programas_espaciales;
+
+    if (localStorage.getItem('lista_programas')) {
+        programas_espaciales = JSON.parse(localStorage.getItem('lista_programas'));
+    }
+
+    let programas_espaciales_filtrados = programas_espaciales.filter((obj) => obj.nombre == nombre_programa);
+
+    if (programas_espaciales_filtrados.length == 0) {
+        return programas_espaciales;
+    } else {
+        return programas_espaciales_filtrados;
+    }
+};
+
+let programas_espaciales = retornar_programa();
 
 const mostrar_programa = () => {
     tbody.innerHTML = '';
     let fila = tbody.insertRow();
-    fila.insertCell().innerHTML = programa_espacial.nombre;
-    fila.insertCell().innerHTML = programa_espacial.fecha_inicio;
-    fila.insertCell().innerHTML = programa_espacial.fecha_final;
-    fila.insertCell().innerHTML = programa_espacial.alcance;
-    fila.insertCell().innerHTML = programa_espacial.coleccion_misiones;
+    fila.insertCell().innerHTML = programas_espaciales[0].nombre;
+    fila.insertCell().innerHTML = programas_espaciales[0].fecha_inicio;
+    fila.insertCell().innerHTML = programas_espaciales[0].fecha_final;
+    fila.insertCell().innerHTML = programas_espaciales[0].alcance;
+    fila.insertCell().innerHTML = programas_espaciales[0].coleccion_misiones;
 
     let boton = document.createElement('button');
     boton.type = "button";
@@ -28,7 +54,9 @@ const mostrar_programa = () => {
 
 };
 
-mostrar_programa();
+if(programas_espaciales){
+    mostrar_programa();
+}
 
 
 boton_atras.addEventListener('click', () => {
