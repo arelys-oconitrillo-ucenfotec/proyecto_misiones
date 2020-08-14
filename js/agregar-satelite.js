@@ -32,7 +32,15 @@ const registrar_satelite = () => {
         planeta.agregar_satelite(satelite);
     });
 
-    satelite = new Satelite(input_nombre.value, input_masa.value, input_temperatura.value, input_duracion_dia.value, input_dist_satelite_cuerpo.value, input_caracteristicas.value);
+    let planeta_seleccionado = [];
+
+    if (localStorage.getItem('planeta_seleccionado')) {
+        planeta_seleccionado = JSON.parse(localStorage.getItem('planeta_seleccionado'));
+    }
+
+    console.log(planeta_seleccionado);
+
+    satelite = new Satelite(input_nombre.value, input_masa.value, input_temperatura.value, input_duracion_dia.value, input_dist_satelite_cuerpo.value, input_caracteristicas.value, planeta_seleccionado.nombre);
 
     planeta.agregar_satelite(satelite);
     localStorage.setItem('planeta_seleccionado', JSON.stringify(planeta));

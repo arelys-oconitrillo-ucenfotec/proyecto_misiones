@@ -39,11 +39,14 @@ const mostrar_misiones = (pmisiones) => {
         card_misiones.classList.add('card');
 
         let nombre = document.createElement('h1');
+        nombre.classList.add('margin');
+        nombre.classList.add('h1');
         nombre.innerText = obj.nombre;
 
         let boton = document.createElement('button');
         boton.type = 'button';
         boton.innerText = 'Ver';
+        boton.classList.add('boton');
 
         card_misiones.appendChild(nombre);
         card_misiones.appendChild(boton);

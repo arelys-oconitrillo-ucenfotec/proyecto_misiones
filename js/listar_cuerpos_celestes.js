@@ -40,11 +40,14 @@ const mostrar_cuerpos_celestes = (pcuerpos_celestes) => {
         card_cuerpos.classList.add('card');
 
         let nombre = document.createElement('h1');
+        nombre.classList.add('margin');
+        nombre.classList.add('h1');
         nombre.innerText = obj.nombre;
 
         let boton = document.createElement('button');
         boton.type = 'button';
         boton.innerText = 'Ver';
+        boton.classList.add('boton');
 
         card_cuerpos.appendChild(nombre);
         card_cuerpos.appendChild(boton);

@@ -40,7 +40,10 @@ const mostrar_programa = () => {
     fila.insertCell().innerHTML = programas_espaciales[0].fecha_inicio;
     fila.insertCell().innerHTML = programas_espaciales[0].fecha_final;
     fila.insertCell().innerHTML = programas_espaciales[0].alcance;
-    fila.insertCell().innerHTML = programas_espaciales[0].coleccion_misiones;
+    
+    programas_espaciales[0].coleccion_misiones.forEach(mision => {
+        fila.insertCell().innerHTML = mision.nombre;
+    });
 
     let boton = document.createElement('button');
     boton.type = "button";

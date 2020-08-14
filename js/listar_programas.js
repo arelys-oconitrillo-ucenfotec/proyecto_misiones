@@ -39,11 +39,14 @@ const mostrar_programas = (pprogramas_espaciales) => {
         card_programas.classList.add('card');
 
         let nombre = document.createElement('h1');
+        nombre.classList.add('margin');
+        nombre.classList.add('h1');
         nombre.innerText = obj.nombre;
 
         let boton = document.createElement('button');
         boton.type = 'button';
         boton.innerText = 'Ver';
+        boton.classList.add('boton');
 
         card_programas.appendChild(nombre);
         card_programas.appendChild(boton);

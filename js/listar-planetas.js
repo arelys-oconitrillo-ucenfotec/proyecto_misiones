@@ -5,13 +5,12 @@ const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
 let lista_planetas = obtener_planetas();
 
-/*if (localStorage.getItem('listas_planetas')) {
-    lista_planetas = JSON.parse(localStorage.getItem('listas_planetas'));
-}*/
+
 
 const mostrar_planetas = (plista_planetas) => {
     tbody.innerHTML = '';
     plista_planetas.forEach(obj_planeta => {
+        console.log(obj_planeta.coleccion_satelites[0].nombre);
         let fila = tbody.insertRow();
         fila.insertCell().innerHTML = obj_planeta.nombre;
         fila.insertCell().innerHTML = obj_planeta.masa;
@@ -20,11 +19,15 @@ const mostrar_planetas = (plista_planetas) => {
         fila.insertCell().innerHTML = obj_planeta.distancia_sol;
         fila.insertCell().innerHTML = obj_planeta.duracion_anno;
         fila.insertCell().innerHTML = obj_planeta.cant_satelites;
-        fila.insertCell().innerHTML = obj_planeta.coleccion_satelites;
+        obj_planeta.coleccion_satelites.forEach(sate => {
+            fila.insertCell().innerHTML = sate.nombre;
+        });
+
 
         let boton = document.createElement('button');
         boton.type = "button";
         boton.innerText = 'Agregar Satelite';
+        boton.classList.add('boton2');
         fila.insertCell().appendChild(boton);
         boton.addEventListener('click', () => {
             localStorage.setItem('planeta_seleccionado', JSON.stringify(obj_planeta));
