@@ -34,3 +34,9 @@ class Mision {
         this.coleccion_cuerpos_destino.push(obj_cuerpo);
     };
 };
+
+class Tripulante {
+    constructor(pnombre) {
+        this.nombre = pnombre;
+    };
+};
