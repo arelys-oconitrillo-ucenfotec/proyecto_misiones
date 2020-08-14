@@ -16,30 +16,34 @@ if (localStorage.getItem('lista_misiones')) {
 
 const registrar_mision = () => {
     let nombre = input_nombre.value;
-    if (bu)
+    if (buscar_mision(nombre)) {
+        //sweet alert, ya existe una tienda con ese código
+    } else {
+        let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
+        let programa;
+        let mision;
 
-    let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
-    let programa;
-    let mision;
+        programa = new Programa(programa_json.nombre, programa_json.fecha_inicio, programa_json.fecha_final, programa_json.alcance);
 
-    programa = new Programa(programa_json.nombre, programa_json.fecha_inicio, programa_json.fecha_final, programa_json.alcance);
+        programa_json.coleccion_misiones.forEach(mision_json => {
+            let mision = new Mision(mision_json.nombre, mision_json.fecha_lanzamiento, mision_json.duracion, mision_json.datos_interes, mision_json.resultado, mision_json.nave);
 
-    programa_json.coleccion_misiones.forEach(mision_json => {
-        let mision = new Mision(mision_json.nombre, mision_json.fecha_lanzamiento, mision_json.duracion, mision_json.datos_interes, mision_json.resultado, mision_json.nave);
+            programa.agregar_mision(mision);
+
+        });
+
+        mision = new Mision(input_nombre.value, input_fecha.value, input_duracion.value, input_datos.value, input_resultado.value, input_nave.value);
 
         programa.agregar_mision(mision);
-        
-    });
+        localStorage.setItem('programa_seleccionado', JSON.stringify(programa));
 
-    mision = new Mision(input_nombre.value, input_fecha.value, input_duracion.value, input_datos.value, input_resultado.value, input_nave.value);
+        lista_misiones.push(mision);
+        localStorage.setItem('lista_misiones', JSON.stringify(lista_misiones));
 
-    programa.agregar_mision(mision);
-    localStorage.setItem('programa_seleccionado', JSON.stringify(programa));
+        modificar_programas(programa);
+    }
 
-    lista_misiones.push(mision);
-    localStorage.setItem('lista_misiones', JSON.stringify(lista_misiones));
 
-    modificar_programas(programa);
 };
 
 boton.addEventListener('click', registrar_mision);

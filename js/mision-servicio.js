@@ -24,6 +24,7 @@ const modificar_misiones = (pmision) => {
     let lista_misiones = obtener_misiones();
     lista_misiones.forEach((obj_mision, i) => {
         if (obj_mision.nombre == pmision.nombre) {
+            lista_misiones.splice(i, 1);
             lista_misiones.push(pmision);
         }
     });

@@ -24,6 +24,7 @@ const modificar_planetas = (pplaneta) => {
     let lista_planetas = obtener_planetas();
     lista_planetas.forEach((obj_planeta, i) => {
         if (obj_planeta.nombre == pplaneta.nombre) {
+            lista_planetas.splice(i, 1);
             lista_planetas.push(pplaneta);
         }
     });

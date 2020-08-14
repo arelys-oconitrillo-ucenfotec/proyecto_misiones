@@ -24,6 +24,7 @@ const modificar_programas = (pprograma) => {
     let lista_programas = obtener_programas();
     lista_programas.forEach((obj_programa, i) => {
         if (obj_programa.nombre == pprograma.nombre) {
+            lista_programas.splice(i, 1)
             lista_programas.push(pprograma);
         }
     });
