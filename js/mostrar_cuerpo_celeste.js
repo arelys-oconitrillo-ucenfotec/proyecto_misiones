@@ -31,6 +31,7 @@ const retornar_cuerpos_celestes = () => {
 };
 
 let cuerpos_celestes = retornar_cuerpos_celestes();
+console.log(cuerpos_celestes);
 
 
 if (cuerpos_celestes) {
@@ -39,6 +40,21 @@ if (cuerpos_celestes) {
     document.querySelector('.masa').innerText = `Masa: ${cuerpos_celestes[0].masa}`;
     document.querySelector('.temperatura').innerText = `Temperatura media: ${cuerpos_celestes[0].temperatura}`;
     document.querySelector('.duracion').innerText = `Duración de un día: ${cuerpos_celestes[0].duracion_dia}`;
+    if(cuerpos_celestes[0].tipo == 'Estrella') {
+        document.querySelector('#info-estrella').classList.remove('ocultar');
+        document.querySelector('.edad').innerText = `Edad: ${cuerpos_celestes[0].edad}`;
+        document.querySelector('.composicion').innerText = `Composición: ${cuerpos_celestes[0].composicion}`;
+        document.querySelector('.intensidad_luminica').innerText = `Intensidad Luminica: ${cuerpos_celestes[0].intensidad_luminica}`;
+        document.querySelector('.tamanno').innerText = `Tamaño: ${cuerpos_celestes[0].tamanno}`;
+    } else {
+        if(cuerpos_celestes[0].tipo == 'Planeta'){
+            document.querySelector('#info-planeta').classList.remove('ocultar');
+            document.querySelector('.distancia_sol').innerText = `Distancia media del sol: ${cuerpos_celestes[0].distancia_sol}`;
+            document.querySelector('.duracion_anno').innerText = `Duración de un año: ${cuerpos_celestes[0].duracion_anno}`;
+            document.querySelector('.cant_satelites').innerText = `Cantidad de satélites: ${cuerpos_celestes[0].cant_satelites}`;
+            document.querySelector('.satelites').innerText = `Satélites en su órbita: ${cuerpos_celestes[0].coleccion_satelites}`;
+        }
+    }
     
 }
 
