@@ -15,6 +15,9 @@ if (localStorage.getItem('lista_misiones')) {
 }
 
 const registrar_mision = () => {
+    let nombre = input_nombre.value;
+    if (bu)
+
     let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
     let programa;
     let mision;
