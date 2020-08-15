@@ -14,6 +14,24 @@ if (localStorage.getItem('lista_misiones')) {
     lista_misiones = JSON.parse(localStorage.getItem('lista_misiones'));
 }
 
+const validar = () => {
+    const inputs_requeridos = document.querySelectorAll('[required]');
+    let tamano = inputs_requeridos.length;
+    let error = false;
+    for (let i = 0; i < tamano; i++) {
+        //Recorre el arreglo y si algún campo no se ha llenado lo marca en rojo
+        if (inputs_requeridos[i].value == '') {
+            error = true; //Error es true si el campo está vacío
+            inputs_requeridos[i].classList.add('input_error'); //Clase que viene desde el css
+        }
+        //Si el campo ya se llenó desmarca el campo en rojo
+        else {
+            inputs_requeridos[i].classList.remove('input_error');
+        }
+    }
+    return error;
+};
+
 const registrar_mision = () => {
     let nombre = input_nombre.value;
     if (buscar_mision(nombre)) {
