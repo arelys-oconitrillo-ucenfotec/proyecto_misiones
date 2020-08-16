@@ -53,6 +53,8 @@ if (cuerpos_celestes) {
             document.querySelector('.duracion_anno').innerText = `Duración de un año: ${cuerpos_celestes[0].duracion_anno}`;
             document.querySelector('.cant_satelites').innerText = `Cantidad de satélites: ${cuerpos_celestes[0].cant_satelites}`;
             document.querySelector('.satelites').innerText = `Satélites en su órbita: ${cuerpos_celestes[0].coleccion_satelites}`;
+        } else {
+            //Agregar info del satelite
         }
     }
     

@@ -6,6 +6,7 @@ const input_duracion = document.querySelector('#txt-duracion');
 const input_datos = document.querySelector('#txt-datos');
 const input_resultado = document.querySelector('#txt-resultado');
 const input_nave = document.querySelector('#txt-nave');
+const slt_cuerpos_container = document.querySelector('#slt-cuerpos-container');
 const boton = document.querySelector('#btn-guardar');
 
 let lista_misiones = [];
@@ -32,6 +33,29 @@ const validar = () => {
     return error;
 };
 
+const crear_select_cuerpos = () => {
+    let cuerpos_celestes = obtener_cuerpos();
+    let select_cuerpos = document.createElement('div');
+    select_cuerpos.id = 'slt_cuerpos';
+
+    cuerpos_celestes.forEach(cuerpo => {
+        let input = document.createElement('input');
+        input.type = 'checkbox';
+        input.id = cuerpo.nombre;
+        input.name = cuerpo.nombre;
+        input.value = cuerpo.nombre;
+
+        let label = document.createElement('label');
+        label.innerText = cuerpo.nombre;
+        label.setAttribute('for', cuerpo.nombre);
+
+        select_cuerpos.appendChild(input);
+        select_cuerpos.appendChild(label);
+    });
+
+    slt_cuerpos_container.appendChild(select_cuerpos);
+};
+
 const registrar_mision = () => {
     let nombre = input_nombre.value;
     if (buscar_mision(nombre)) {
@@ -52,6 +76,30 @@ const registrar_mision = () => {
 
         mision = new Mision(input_nombre.value, input_fecha.value, input_duracion.value, input_datos.value, input_resultado.value, input_nave.value);
 
+        let cuerpos_celestes = obtener_cuerpos();
+        let checkboxes_cuerpos_celestes = document.querySelectorAll('#slt_cuerpos input');
+
+        checkboxes_cuerpos_celestes.forEach(checkbox => {
+            if (checkbox.checked) {
+                cuerpos_celestes.forEach(cuerpo_json => {
+                    if (cuerpo_json.nombre == checkbox.value) {
+                        if (cuerpo_json.tipo == 'Estrella') {
+                           let cuerpo = new Estrella(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo_cuerpo_json_celeste, cuerpo_json.edad, cuerpo_json.composicion, cuerpo_json.intensidad_lumi, cuerpo_json.tamanno);
+                            mision.agregar_cuerpos_destino(cuerpo);
+                            
+                        } else if (cuerpo_json.tipo == 'Planeta') {
+                           let cuerpo = new Planeta(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo_cuerpo_json_celeste, cuerpo_json.distancia_sol, cuerpo_json.duracion_anno, cuerpo_json.cant_satelites);
+                            mision.agregar_cuerpos_destino(cuerpo);
+                            
+                        }
+
+                        
+                    }
+                });
+            }
+        });
+
+
         programa.agregar_mision(mision);
         localStorage.setItem('programa_seleccionado', JSON.stringify(programa));
 
@@ -63,5 +111,7 @@ const registrar_mision = () => {
 
 
 };
+
+crear_select_cuerpos();
 
 boton.addEventListener('click', registrar_mision);

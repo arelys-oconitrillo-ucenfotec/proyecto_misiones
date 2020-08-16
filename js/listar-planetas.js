@@ -10,7 +10,6 @@ let lista_planetas = obtener_planetas();
 const mostrar_planetas = (plista_planetas) => {
     tbody.innerHTML = '';
     plista_planetas.forEach(obj_planeta => {
-        console.log(obj_planeta.coleccion_satelites[0].nombre);
         let fila = tbody.insertRow();
         fila.insertCell().innerHTML = obj_planeta.nombre;
         fila.insertCell().innerHTML = obj_planeta.masa;
