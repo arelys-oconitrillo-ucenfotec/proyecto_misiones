@@ -54,6 +54,14 @@ const mostrar_programa = () => {
         window.location.href = 'registrar-mision.html';
     });
 
+    let boton2 = document.createElement('button');
+    boton2.type = "button";
+    boton2.innerText = 'Ver Misiones';
+    fila.insertCell().appendChild(boton2);
+    boton2.addEventListener('click', () => {
+        window.location.href = 'listar-mision-programa.html';
+    });
+
 
 };
 
