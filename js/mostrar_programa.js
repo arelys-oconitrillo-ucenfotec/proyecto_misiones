@@ -59,10 +59,9 @@ const mostrar_programa = () => {
     boton2.innerText = 'Ver Misiones';
     fila.insertCell().appendChild(boton2);
     boton2.addEventListener('click', () => {
+        localStorage.setItem('programa_seleccionado', JSON.stringify(programa_espacial));
         window.location.href = 'listar-mision-programa.html';
     });
-
-
 };
 
 if(programas_espaciales){

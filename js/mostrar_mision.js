@@ -61,7 +61,7 @@ const mostrar_mision = () => {
     fila.insertCell().appendChild(boton);
 
     boton.addEventListener('click', () => {
-        localStorage.setItem('mision_seleccionada', JSON.stringify(mision));
+        JSON.parse(localStorage.getItem('mision_seleccionada'));
         window.location.href = 'registrar-tripulante.html';
     });
 //-----------------------------------------------------///

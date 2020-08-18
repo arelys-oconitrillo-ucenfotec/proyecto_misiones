@@ -31,7 +31,6 @@ const retornar_misiones = () => {
 let misiones = retornar_misiones();
 
 const mostrar_misiones = (pmisiones) => {
-    //let productos = obtener_programas();
     sct_misiones.innerHTML = '';
 
     pmisiones.forEach(obj => {
@@ -53,7 +52,7 @@ const mostrar_misiones = (pmisiones) => {
         sct_misiones.appendChild(card_misiones);
 
         boton.addEventListener('click', () => {
-            localStorage.setItem('mision', JSON.stringify(obj));
+            localStorage.setItem('mision_seleccionada', JSON.stringify(obj));
             window.location.href = `mostrar-mision.html?nombre=${obj.nombre}`;
         });
     });
@@ -65,5 +64,5 @@ mostrar_misiones(misiones);
 filtro_nombre.addEventListener('keyup', () => {
     let filtro = filtro_nombre.value.toLowerCase();
     let misiones_filtradas = misiones.filter((mision) => mision.nombre.toLowerCase().includes(filtro));
-    mostrar_programas(misiones_filtradas);
+    mostrar_misiones(misiones_filtradas);
 });

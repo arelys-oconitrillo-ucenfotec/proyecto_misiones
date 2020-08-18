@@ -55,11 +55,13 @@ const registrar_tripulante = () => {
 
         mision.agregar_tripulante(tripulante);
         localStorage.setItem('mision_seleccionada', JSON.stringify(mision));
+        console.log(mision);
 
         lista_tripulantes.push(tripulante);
         localStorage.setItem('lista_tripulantes', JSON.stringify(lista_tripulantes));
 
         modificar_misiones(mision);
+        console.log(modificar_misiones(mision));
     }
 
 };

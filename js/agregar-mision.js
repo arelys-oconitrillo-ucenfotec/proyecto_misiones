@@ -116,9 +116,10 @@ const registrar_mision = () => {
 
         lista_misiones.push(mision);
         localStorage.setItem('lista_misiones', JSON.stringify(lista_misiones));
-
-        modificar_programas(programa);
+        
         modificar_misiones(mision);
+        modificar_programas(programa);
+       
     }
 
 
