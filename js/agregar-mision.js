@@ -82,31 +82,21 @@ const registrar_mision = () => {
         checkboxes_cuerpos_celestes.forEach(checkbox => {
             if (checkbox.checked) {
                 cuerpos_celestes.forEach(cuerpo_json => {
-                    let cuerpo;
+
                     if (cuerpo_json.nombre == checkbox.value) {
                         if (cuerpo_json.tipo == 'Estrella') {
-                            cuerpo = new Estrella(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo_cuerpo_json_celeste, cuerpo_json.edad, cuerpo_json.composicion, cuerpo_json.intensidad_lumi, cuerpo_json.tamanno);
-                            mision.agregar_cuerpos_destino(cuerpo);
-                          
-
-                        } else {
-                            if (cuerpo_json.tipo == 'Planeta') {
-                                cuerpo = new Planeta(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo_cuerpo_json_celeste, cuerpo_json.distancia_sol, cuerpo_json.duracion_anno, cuerpo_json.cant_satelites);
-                                mision.agregar_cuerpos_destino(cuerpo);
-                                
-
-                            } else {
-
-                                if (cuerpo_json.tipo == 'Satélite') {
-                                    cuerpo = new Satelite(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo_cuerpo_json_celeste, cuerpo_json.distancia_sol, cuerpo_json.duracion_anno, cuerpo_json.cant_satelites);
-                                    mision.agregar_cuerpos_destino(cuerpo);
-                                    
-                                }
-                            }
+                            let estrella = new Estrella(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo, cuerpo_json.edad, cuerpo_json.composicion, cuerpo_json.intensidad_lumi, cuerpo_json.tamanno);
+                            mision.agregar_cuerpos_destino(estrella);
+                        }
+                        if (cuerpo_json.tipo == 'Planeta') {
+                            let planeta = new Planeta(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo, cuerpo_json.distancia_sol, cuerpo_json.duracion_anno, cuerpo_json.cant_satelites);
+                            mision.agregar_cuerpos_destino(planeta);
+                        }
+                        if (cuerpo_json.tipo == 'Satélite') {
+                            let satelite = new Satelite(cuerpo_json.nombre, cuerpo_json.masa, cuerpo_json.temperatura, cuerpo_json.duracion_dia, cuerpo_json.tipo, cuerpo_json.distancia_sol, cuerpo_json.duracion_anno, cuerpo_json.cant_satelites);
+                            mision.agregar_cuerpos_destino(satelite);
                         }
                     }
-
-
                 });
             }
         });
@@ -116,10 +106,10 @@ const registrar_mision = () => {
 
         lista_misiones.push(mision);
         localStorage.setItem('lista_misiones', JSON.stringify(lista_misiones));
-        
+
         modificar_misiones(mision);
         modificar_programas(programa);
-       
+
     }
 
 
