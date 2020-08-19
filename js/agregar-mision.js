@@ -59,7 +59,11 @@ const crear_select_cuerpos = () => {
 const registrar_mision = () => {
     let nombre = input_nombre.value;
     if (buscar_mision(nombre)) {
-        //sweet alert, ya existe una tienda con ese código
+        Swal.fire({
+            'icon': 'warning',
+            'title': 'No se puede registrar, ya existe una misión con ese nombre',
+            'confirmButtonText': 'Entendido'
+        })
     } else {
         let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
         let programa;

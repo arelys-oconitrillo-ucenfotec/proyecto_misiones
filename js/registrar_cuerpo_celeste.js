@@ -46,7 +46,11 @@ const registrar_cuerpo_celeste = () => {
         let nombre = input_nombre.value;
 
         if (buscar_planeta(nombre)) {
-            //sweet alert, ya existe una tienda con ese código
+            Swal.fire({
+                'icon': 'warning',
+                'title': 'No se puede registrar, ya existe un cuerpo celeste con ese nombre',
+                'confirmButtonText': 'Entendido'
+            })
         } else {
             let masa = input_masa.value;
             let temperatura = input_temperatura.value;

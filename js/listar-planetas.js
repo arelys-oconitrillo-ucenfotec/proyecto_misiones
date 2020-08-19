@@ -32,6 +32,16 @@ const mostrar_planetas = (plista_planetas) => {
             localStorage.setItem('planeta_seleccionado', JSON.stringify(obj_planeta));
             window.location.href = 'registrar-satelite.html';
         });
+
+        let boton2 = document.createElement('button');
+        boton2.type = "button";
+        boton2.innerText = 'Ver misiones';
+        fila.insertCell().appendChild(boton2);
+    
+        boton2.addEventListener('click', () => {
+            localStorage.setItem('cuerpo_celeste_seleccionado', JSON.stringify(obj_planeta.nombre));
+            window.location.href = 'listar_misiones_cuerpo.html';
+        });
     });
 };
 

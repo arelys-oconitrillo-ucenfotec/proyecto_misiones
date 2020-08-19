@@ -19,6 +19,15 @@ const mostrar_tripulantes = (plista_tripulantes) => {
     return html_tripulantes;
 };
 
+const mostrar_cuerpos = (plista_cuerpos) => {
+    let html_cuerpos = '';
+    plista_cuerpos.forEach(obj_cuerpo => {
+        html_cuerpos += '<p>' + obj_cuerpo.nombre + '</p>';
+    });
+
+    return html_cuerpos;
+};
+
 const mostrar_misiones = () => {
     coleccion_misiones_programa.forEach(mision_programa => {
         let lista_misiones_programa = lista_misiones.filter((mision) => mision.nombre == mision_programa.nombre);
@@ -30,7 +39,7 @@ const mostrar_misiones = () => {
         fila.insertCell().innerHTML = lista_misiones_programa[0].resultado;
         fila.insertCell().innerHTML = lista_misiones_programa[0].nave;
         fila.insertCell().innerHTML = mostrar_tripulantes(lista_misiones_programa[0].tripulantes);
-        
+        fila.insertCell().innerHTML = mostrar_cuerpos(lista_misiones_programa[0].coleccion_cuerpos_destino);
     });
 };
 

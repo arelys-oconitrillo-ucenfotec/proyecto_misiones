@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -19,28 +21,27 @@
             <a href="listar-satelites.html">Satélites</a>
         </nav>
     </header>
-    <div>
-        <input type="text" placeholder="Filtrar" id="txt_filtro_nombre">
-    </div>
-    <table id="tbl-planetas">
+    <table id="tbl-mision">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Masa</th>
-                <th>Temperatura media</th>
-                <th>Duración de un día</th>
-                <th>Distancia media del sol</th>
-                <th>Duración de un año</th>
-                <th>Cantidad de satélites</th>
-                <th>Satélites en su órbita</th>
+                <th>Nombre de la misión</th>
+                <th>Fecha de lanzamiento</th>
+                <th>Duración en tiempo</th>
+                <th>Datos de interés</th>
+                <th>Resultado</th>
+                <th>Nave</th>
+                <th>Tripulantes</th>
             </tr>
         </thead>
         <tbody>
 
         </tbody>
     </table>
-    <script src="js/cuerpo_celeste.js"></script>
-    <script src="js/cuerpo-celeste-servicio.js"></script>
-    <script src="js/listar-planetas.js"></script>
+    <button id="boton_atras" type="button">Atrás</button>
+
+    <script src="js/programa_espacial.js"></script>
+    <script src="js/programa-servicio.js"></script>
+    <script src="js/listar_mision_cuerpo.js"></script>
 </body>
+
 </html>

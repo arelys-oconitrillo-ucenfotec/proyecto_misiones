@@ -22,6 +22,16 @@ const mostrar_estrellas = (plista_estrellas) =>{
         fila.insertCell().innerHTML = obj_estrella.composicion;
         fila.insertCell().innerHTML = obj_estrella.intensidad_luminica;
         fila.insertCell().innerHTML = obj_estrella.tamanno;
+
+        let boton = document.createElement('button');
+        boton.type = "button";
+        boton.innerText = 'Ver misiones';
+        fila.insertCell().appendChild(boton);
+    
+        boton.addEventListener('click', () => {
+            localStorage.setItem('cuerpo_celeste_seleccionado', JSON.stringify(obj_estrella.nombre));
+            window.location.href = 'listar_misiones_cuerpo.html';
+        });
     });
 };
 

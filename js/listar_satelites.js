@@ -22,6 +22,16 @@ const mostrar_satelites = (plista_satelites) =>{
         fila.insertCell().innerHTML = obj_satelite.dista_satelite_cuerpo_orbita;
         fila.insertCell().innerHTML = obj_satelite.caracteristicas;
         fila.insertCell().innerHTML = obj_satelite.planeta_pertenece;
+
+        let boton = document.createElement('button');
+        boton.type = "button";
+        boton.innerText = 'Ver misiones';
+        fila.insertCell().appendChild(boton);
+    
+        boton.addEventListener('click', () => {
+            localStorage.setItem('cuerpo_celeste_seleccionado', JSON.stringify(obj_satelite.nombre));
+            window.location.href = 'listar_misiones_cuerpo.html';
+        });
     });
 };
 
