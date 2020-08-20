@@ -42,7 +42,6 @@ const registrar_cuerpo_celeste = () => {
         })
         console.log('Por favor rellene los campos en blanco');
     } else {
-
         let nombre = input_nombre.value;
 
         if (buscar_planeta(nombre)) {

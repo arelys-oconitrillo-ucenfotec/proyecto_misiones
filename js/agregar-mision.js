@@ -65,6 +65,11 @@ const registrar_mision = () => {
             'confirmButtonText': 'Entendido'
         })
     } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'El registro se realizó con éxito'
+        });
+        document.getElementById("formulario").reset();
         let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
         let programa;
         let mision;

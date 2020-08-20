@@ -47,6 +47,11 @@ const registrar_satelite = () => {
             text: 'Por favor rellene los campos resaltados en el formulario'
         });
     } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'El registro se realizó con éxito'
+        });
+        document.getElementById("formulario").reset();
         let planeta_json = JSON.parse(localStorage.getItem('planeta_seleccionado'));
         let planeta;
         let satelite;

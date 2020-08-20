@@ -38,6 +38,11 @@ const registrar_tripulante = () => {
             text: 'Por favor rellene los campos resaltados en el formulario'
         });
     } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'El registro se realizó con éxito'
+        });
+        document.getElementById("formulario").reset();
         let mision_json = JSON.parse(localStorage.getItem('mision_seleccionada'));
         let mision;
         let tripulante;
