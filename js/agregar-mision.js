@@ -57,7 +57,15 @@ const crear_select_cuerpos = () => {
 };
 
 const registrar_mision = () => {
-    let nombre = input_nombre.value;
+    let error = validar();
+    if (error) {
+        swal.fire({
+            icon: 'warning',
+            title: 'No se puede registrar el satélite',
+            text: 'Por favor rellene los campos resaltados en el formulario'
+        });
+    } else {
+        let nombre = input_nombre.value;
     if (buscar_mision(nombre)) {
         Swal.fire({
             'icon': 'warning',
@@ -123,7 +131,7 @@ const registrar_mision = () => {
 
     }
 
-
+    }
 };
 
 crear_select_cuerpos();
