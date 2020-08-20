@@ -48,6 +48,7 @@ const mostrar_programa = () => {
     let boton = document.createElement('button');
     boton.type = "button";
     boton.innerText = 'Agregar Misión';
+    boton.classList.add('boton2');
     fila.insertCell().appendChild(boton);
     boton.addEventListener('click', () => {
         localStorage.setItem('programa_seleccionado', JSON.stringify(programa_espacial));
@@ -57,6 +58,7 @@ const mostrar_programa = () => {
     let boton2 = document.createElement('button');
     boton2.type = "button";
     boton2.innerText = 'Ver Misiones';
+    boton2.classList.add('boton2');
     fila.insertCell().appendChild(boton2);
     boton2.addEventListener('click', () => {
         localStorage.setItem('programa_seleccionado', JSON.stringify(programa_espacial));

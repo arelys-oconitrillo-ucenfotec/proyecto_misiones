@@ -31,7 +31,6 @@ const retornar_programas_espaciales = () => {
 let programas_espaciales = retornar_programas_espaciales();
 
 const mostrar_programas = (pprogramas_espaciales) => {
-    //let productos = obtener_programas();
     sct_programas_espaciales.innerHTML = '';
 
     pprogramas_espaciales.forEach(obj => {

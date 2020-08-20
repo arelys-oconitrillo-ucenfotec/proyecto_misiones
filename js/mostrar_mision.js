@@ -67,6 +67,7 @@ const mostrar_mision = () => {
     let boton = document.createElement('button');
     boton.type = "button";
     boton.innerText = 'Agregar tripulante';
+    boton.classList.add('boton2');
     fila.insertCell().appendChild(boton);
 
     boton.addEventListener('click', () => {

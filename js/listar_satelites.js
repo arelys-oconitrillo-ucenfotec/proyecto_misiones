@@ -26,6 +26,7 @@ const mostrar_satelites = (plista_satelites) =>{
         let boton = document.createElement('button');
         boton.type = "button";
         boton.innerText = 'Ver misiones';
+        boton.classList.add('boton2');
         fila.insertCell().appendChild(boton);
     
         boton.addEventListener('click', () => {
