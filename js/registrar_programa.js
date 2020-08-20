@@ -37,11 +37,7 @@ const registrar_programa = () => {
         });
     }
     else {
-        Swal.fire({
-            icon: 'success',
-            title: 'El registro se realizó con éxito'
-        });
-        document.getElementById("formulario").reset();
+       
         let nombre = txt_nombre.value;
         let fecha_inicio = txt_fecha_inicio.value;
         let fecha_final = txt_fecha_final.value;
@@ -52,6 +48,14 @@ const registrar_programa = () => {
 
         lista_programas.push(obj_programa);
         localStorage.setItem('lista_programas', JSON.stringify(lista_programas));
+        Swal.fire({
+            icon: 'success',
+            title: 'El registro se realizó con éxito'
+        }).then(() => {
+            document.getElementById("formulario").reset();
+            window.location.href = 'listar_programas.html';
+        });
+        
     }
 };
 

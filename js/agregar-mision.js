@@ -65,11 +65,6 @@ const registrar_mision = () => {
             'confirmButtonText': 'Entendido'
         })
     } else {
-        Swal.fire({
-            icon: 'success',
-            title: 'El registro se realizó con éxito'
-        });
-        document.getElementById("formulario").reset();
         let programa_json = JSON.parse(localStorage.getItem('programa_seleccionado'));
         let programa;
         let mision;
@@ -118,6 +113,13 @@ const registrar_mision = () => {
 
         modificar_misiones(mision);
         modificar_programas(programa);
+        Swal.fire({
+            icon: 'success',
+            title: 'El registro se realizó con éxito'
+        }).then(() => {
+            document.getElementById("formulario").reset();
+            window.location.href = 'listar-misiones.html';
+        });
 
     }
 
