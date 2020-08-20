@@ -31,8 +31,6 @@ const retornar_cuerpos_celestes = () => {
 };
 
 let cuerpos_celestes = retornar_cuerpos_celestes();
-console.log(cuerpos_celestes);
-
 
 if (cuerpos_celestes) {
     document.querySelector('.tipo').innerText = cuerpos_celestes[0].tipo;

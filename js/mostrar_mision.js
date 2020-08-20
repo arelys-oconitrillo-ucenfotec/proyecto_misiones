@@ -60,7 +60,6 @@ const mostrar_mision = () => {
     fila.insertCell().innerHTML = misiones[0].datos_interes;
     fila.insertCell().innerHTML = misiones[0].resultado;
     fila.insertCell().innerHTML = misiones[0].nave;
-    console.log(misiones[0]);
     fila.insertCell().innerHTML = mostrar_tripulantes(misiones[0].tripulantes);
     fila.insertCell().innerHTML = mostrar_cuerpos_celestes(misiones[0].coleccion_cuerpos_destino);
     
@@ -74,8 +73,6 @@ const mostrar_mision = () => {
         JSON.parse(localStorage.getItem('mision_seleccionada'));
         window.location.href = 'registrar-tripulante.html';
     });
-   
-
 };
 
 if(misiones){

@@ -9,8 +9,6 @@ if (localStorage.getItem('lista_satelites')) {
     lista_satelites = JSON.parse(localStorage.getItem('lista_satelites'));
 }
 
-console.log(lista_satelites);
-
 const mostrar_satelites = (plista_satelites) =>{
     tbody.innerHTML = '';
     plista_satelites.forEach(obj_satelite => {

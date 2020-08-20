@@ -40,7 +40,7 @@ const registrar_cuerpo_celeste = () => {
             'title': 'Por favor revise los campos en rojo',
             'confirmButtonText': 'Entendido'
         })
-        console.log('Por favor rellene los campos en blanco');
+        .log('Por favor rellene los campos en blanco');
     } else {
         let nombre = input_nombre.value;
 
