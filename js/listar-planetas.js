@@ -5,7 +5,14 @@ const filtro_nombre = document.querySelector('#txt_filtro_nombre');
 
 let lista_planetas = obtener_planetas();
 
+const mostrar_satelites = (plista_satelites) =>{
+    let html_satelites = '';
+    plista_satelites.forEach(obj_satelite => {
+        html_satelites += '<p>' + obj_satelite.nombre + '</p>';
+    });
 
+    return html_satelites;
+};
 
 const mostrar_planetas = (plista_planetas) => {
     tbody.innerHTML = '';
@@ -18,10 +25,7 @@ const mostrar_planetas = (plista_planetas) => {
         fila.insertCell().innerHTML = obj_planeta.distancia_sol;
         fila.insertCell().innerHTML = obj_planeta.duracion_anno;
         fila.insertCell().innerHTML = obj_planeta.cant_satelites;
-        obj_planeta.coleccion_satelites.forEach(sate => {
-            fila.insertCell().innerHTML = sate.nombre;
-        });
-
+        fila.insertCell().innerHTML = mostrar_satelites(obj_planeta.coleccion_satelites);
 
         let boton = document.createElement('button');
         boton.type = "button";
@@ -36,6 +40,7 @@ const mostrar_planetas = (plista_planetas) => {
         let boton2 = document.createElement('button');
         boton2.type = "button";
         boton2.innerText = 'Ver misiones';
+        boton2.classList.add('boton2');
         fila.insertCell().appendChild(boton2);
     
         boton2.addEventListener('click', () => {
